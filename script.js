@@ -13,6 +13,10 @@ const HintText = document.querySelector("#start-hint");
 const GameInput = document.querySelector("#game-input");
 const Game = document.querySelector("#game");
 const ResetScreen = document.querySelector("#retry-screen");
+const CanBeatHS = document.querySelector("#can-beat");
+
+if (localStorage.getItem("high-score") !== null)
+    CanBeatHSQuestionGen(localStorage.getItem("high-score").toString());
 
 Game.style.display = "initial";
 GameInput.focus();
@@ -36,10 +40,24 @@ GameInput.addEventListener("keyup", event => {
         PreviouslyInputted.innerText = LastInputtedNumbers.toString();
         return;
     }
+    var currentHighScore = localStorage.getItem("high-score");
+    if (localStorage.getItem("high-score") === null || parseInt(currentHighScore) < curIndex) {
+        localStorage.setItem("high-score", curIndex.toString());
+        document.querySelector("#new-high-score").style.display = "inline-block";
+    }
     GenerateFailScreen(inputted, curIndex);
 });
 
 document.querySelector("#reset-game").addEventListener("click", resetGame)
+
+
+/**
+ * Appends a `Can you beat your high score of ___?` to the __To start__ text
+ * @param {string | number} highScore 
+ */
+function CanBeatHSQuestionGen(highScore) {
+    CanBeatHS.innerText = `Can you beat your high score of ${highScore}?`;
+}
 
 /**
  * Fully restarts the game
@@ -50,6 +68,7 @@ function resetGame() {
     HintText.style.display = "block";
     ResetScreen.style.display = "none";
     Game.style.display = "initial";
+    CanBeatHSQuestionGen(localhost.getItem("high-score"));
 }
 
 /**
