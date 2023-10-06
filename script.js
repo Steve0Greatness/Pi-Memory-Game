@@ -68,7 +68,7 @@ function resetGame() {
     HintText.style.display = "block";
     ResetScreen.style.display = "none";
     Game.style.display = "initial";
-    CanBeatHSQuestionGen(localhost.getItem("high-score"));
+    CanBeatHSQuestionGen(localStorage.getItem("high-score"));
 }
 
 /**
