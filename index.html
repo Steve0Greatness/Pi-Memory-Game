@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Much PI Do You Know?</title>
+</head>
+
+<body>
+    <h1>How Much π Do You Know?</h1>
+    <main>
+        <noscript>
+            <p>This game requires JavaScript to work, please either enable JavaScript, or upgrade to a newer browser.</p>
+        </noscript>
+        <div style="display: none;" id="loading">Loading...</div>
+        <div style="display: none" id="game">
+            <p id="inputted-text"></p>
+            <p id="start-hint"><b>To start</b>, type <code>3.14</code>.</p>
+            <input type="text" id="game-input">
+        </div>
+        <div style="display: none;" id="retry-screen">
+            <p>You got to digit <code id="got-to-num"></code>!</p>
+            <table>
+                <tr>
+                    <th>You put in...</th>
+                    <th>It was actually...</th>
+                </tr>
+                <tr>
+                    <td id="final-inputted-digit"></td>
+                    <td id="actual-digit"></td>
+                </tr>
+            </table>
+            <button id="reset-game">Retry</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
